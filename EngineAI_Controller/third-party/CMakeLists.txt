@@ -1,0 +1,13 @@
+add_subdirectory(Goldfarb_Optimizer)
+add_subdirectory(ParamHandler)
+add_subdirectory(inih)
+add_subdirectory(osqp)
+add_subdirectory(JCQP)
+add_subdirectory(qpOASES)
+add_subdirectory(yesense_without_ros)
+add_subdirectory(SOEM)
+add_subdirectory(LogitechGamepad)
+
+if(CMAKE_SYSTEM_NAME MATCHES Linux)
+add_subdirectory(vectornav)
+endif()

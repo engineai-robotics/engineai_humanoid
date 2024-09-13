@@ -1,0 +1,46 @@
+# Generated on Sat Feb  9 13:18:45 2019
+__collection-name__: robot-parameters
+
+IMU_acc_filter_ratio   : 0.000001
+IMU_omega_filter_ratio : 0.000001
+foot_vel_filter_ratio  : 0.000000001
+
+use_joint_test_RL      : 0
+sin_wave_period        : 5 # default 5s
+# end
+
+leg_0_qdes         : [0.0,0.0,0.0]
+leg_0_qddes        : [0.0,0.0,0.0]
+leg_0_kp           : [0.0,0.0,0.0]
+leg_0_kd           : [0.0,0.0,0.0]
+leg_0_tauff        : [0.0,0.0,0.0]
+
+leg_1_qdes         : [0.0,0.0,0.0]
+leg_1_qddes        : [0.0,0.0,0.0]
+leg_1_kp           : [0.0,0.0,0.0]
+leg_1_kd           : [0.0,0.0,0.0]
+leg_1_tauff        : [0.0,0.0,0.0]
+
+leg_2_qdes         : [0.0,0.0,0.0]
+leg_2_qddes        : [0.0,0.0,0.0]
+leg_2_kp           : [0.0,0.0,0.0]
+leg_2_kd           : [0.0,0.0,0.0]
+leg_2_tauff        : [0.0,0.0,0.0]
+
+leg_3_qdes         : [0.0,0.0,0.0]
+leg_3_qddes        : [0.0,0.0,0.0]
+leg_3_kp           : [0.0,0.0,0.0]
+leg_3_kd           : [0.0,0.0,0.0]
+leg_3_tauff        : [0.0,0.0,0.0]
+
+controller_dt     : 0.002
+control_mode      : 0
+
+use_rc: 1
+
+# RecoveryStand pitch joint positions
+straight_stand_jpos : [-0.1, 0.2, -0.2]
+squat_stand_jpos : [-0.24, 0.48, -0.25]
+safety_damper_kd: [15.0, 15.0, 2.5] # hip knee ankle
+stand_joint_kp: [240.0, 240.0, 200.0]
+stand_joint_kd: [6.0, 6.0, 1.0]

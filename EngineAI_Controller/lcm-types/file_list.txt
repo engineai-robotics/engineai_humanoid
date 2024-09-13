@@ -1,0 +1,1 @@
+lcmtypes/control_parameter_request_lcmt.class lcmtypes/control_parameter_respones_lcmt.class lcmtypes/gamepad_lcmt.class lcmtypes/leg_control_command_lcmt.class lcmtypes/leg_control_data_lcmt.class lcmtypes/spi_command_t.class lcmtypes/spi_data_t.class lcmtypes/state_estimator_lcmt.class

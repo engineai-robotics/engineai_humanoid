@@ -1,0 +1,78 @@
+LeggedRobotRLConfig:
+  control_frequency: 500
+  enable_filter: true
+  cutoff_frequency: 30
+  still_ratio: 0.1
+  enable_ankle_tau_mapping: true
+  
+  joystick:
+    linear_vX_scale: 1.0
+    linear_vY_scale: 0.7
+    linear_omegaZ_scale: 0.8
+    velx_bias: 0.0
+    vely_bias: 0.0
+    roll_bias: 0.0
+    pitch_bias: 0.0
+
+  init_state:
+    default_joint_angle:
+      leg_l1_joint: 0.0
+      leg_l2_joint: 0.0
+      leg_l3_joint: -0.06
+      leg_l4_joint: 0.12
+      leg_l5_joint: -0.06
+      leg_l6_joint: 0
+      leg_r1_joint: 0.0
+      leg_r2_joint: 0.0
+      leg_r3_joint: -0.06
+      leg_r4_joint: 0.12
+      leg_r5_joint: -0.06
+      leg_r6_joint: 0
+
+  control:
+    stiffness:
+      leg_l1_joint: 50
+      leg_l2_joint: 50
+      leg_l3_joint: 70
+      leg_l4_joint: 70
+      leg_l5_joint: 20
+      leg_l6_joint: 20
+      leg_r1_joint: 50
+      leg_r2_joint: 50
+      leg_r3_joint: 70
+      leg_r4_joint: 70
+      leg_r5_joint: 20
+      leg_r6_joint: 20
+
+    damping:
+      leg_l1_joint: 5.0
+      leg_l2_joint: 5.0
+      leg_l3_joint: 7.0
+      leg_l4_joint: 7.0
+      leg_l5_joint: 0.2
+      leg_l6_joint: 0.2
+      leg_r1_joint: 5.0
+      leg_r2_joint: 5.0
+      leg_r3_joint: 7.0
+      leg_r4_joint: 7.0
+      leg_r5_joint: 0.2
+      leg_r6_joint: 0.2
+    action_scale: 0.5
+    decimation: 5
+    gait_period: 0.8 # gait period
+
+  normalization:
+    clip_scales:
+      clip_observations: 100.0
+      clip_actions: 100.0
+    obs_scales:
+      lin_vel: 2
+      ang_vel: 1
+      dof_pos: 1
+      dof_vel: 0.05
+      quat: 1
+
+  size:
+    actions_size: 12
+    observations_size: 47
+    observations_frame_size: 15
