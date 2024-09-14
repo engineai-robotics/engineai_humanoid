@@ -480,13 +480,33 @@ void sbus_packet_complete_logitech()
         rc_control.last_vel_crossx = data.CROSS_X;
         rc_control.last_vel_crossy = data.CROSS_Y;
 
-        if (data.LB > BUTTERN_PRESS_THRESHOULD && data.Y > BUTTERN_PRESS_THRESHOULD && !rc_control.bias_save_mode) // LB + X enable the bias save mode
+        if (data.Y > BUTTERN_PRESS_THRESHOULD && !rc_control.bias_save_mode) // LB + X enable the bias save mode
         {
             rc_control.bias_save_mode = true;
         }
         else
         {
             rc_control.bias_save_mode = false;
+        }
+
+        if (data.X > BUTTERN_PRESS_THRESHOULD && !rc_control.bias_clear_mode)
+        {
+            if (rc_control.imu_euler_angle_calibration_mode)
+            {
+                rc_control.roll_bias = 0;
+                rc_control.pitch_bias = 0;
+            }
+            if (rc_control.imu_linvel_calibration_mode)
+            {
+                rc_control.cmd_vel_bias_x = 0;
+                rc_control.cmd_vel_bias_y = 0;
+            }
+
+            rc_control.bias_clear_mode = true;
+        }
+        else
+        {
+            rc_control.bias_clear_mode = false;
         }
     }
 

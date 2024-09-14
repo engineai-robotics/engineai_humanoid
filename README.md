@@ -44,8 +44,7 @@ Additionally, framework of this repository is designed to combine model based al
     - [1.3.2 Control the robot with your configuration and policy](#132-control-the-robot-with-your-configuration-and-policy)
 - [2. Open-source Requirements](#2-open-source-requirements)
   - [2.1 Code Format](#21-code-format)
-  - [2.2 Code Style](#22-code-style)
-  - [2.3 Code Submit](#23-code-submit)
+  - [2.2 Code Submit](#22-code-submit)
 
 # 1. Deploy Process
 The control algorithm is mainly used for reinforcement learning (RL) deployment on real robot. This repository works with our RL algorithm [engineai_legged_gym](https://github.com/engineai-robotics/engineai_legged_gym).
@@ -218,7 +217,26 @@ Please power on the leg motors with our ESTOP device before you operate the joys
 - Press `LB + X` to enter RL locomotion mode (can only transist from straight stand mode)
   -  Press `A` to alternate standing and walking of RL mode 
 
-Normally, the operation sequency is: power on->`LB + back`->`LB + start`->`LB + B` or `LB + A`-> make robot stand by itself ->`X`->`LB + A` -> lift robot up -> `LB + start` ->`LB + back`-> shut down
+If the robot drifts fast or has an wired orientation when walking without joystick command in RL locomotion mode, you can follow the direction below to calibrate the bias.
+- euler angle bias calibration
+  1. Press `B` to alterately turn on or off the calibration mode of euler angle bias 
+  2. If this mode is turned on, press the `CROSS_AXIS` to calibration the bias(when holding the joystick, the upper and lower button of the `CROSS_AXIS` calibrates the pitch angle, the left and right ones calibrates the roll angle)
+  3. Press `Y` to save the calibrated bias value back to the configured Yaml file.
+  4. Press `B` to turn of the calibration mode
+   
+- linear velocity calibration
+  1. Press `RB` to alterately turn on or off the calibration mode of linear velocity bias 
+  2. If this mode is turned on, press the `CROSS_AXIS` to calibration the bias(when holding the joystick, the upper and lower button of the `CROSS_AXIS` calibrates the X-direction linear velocity, the left and right ones calibrates the Y-direction linear velocity)
+  3. Press `Y` to save the calibrated bias value back to the configured Yaml file.
+  4. Press `B` to turn of the calibration mode
+
+- bias clear when necessary
+  1. turn on the specific calibration mode
+  2. Press `X` to set all the bias values to zero
+  3. Press `Y` to save the calibrated bias value 0 back to the configured Yaml file.
+  4. turn off the specific calibration mode
+
+Normally, the operation sequency is: power on->`LB + back`->`LB + start`->`LB + B` or `LB + A`-> make robot stand by itself ->`LB + X`->`LB + A` -> lift robot up -> `LB + start` ->`LB + back`-> shut down
 
 **Note that: When robot stands or walks by itsefly, only use `LB + RB`, `LB + start` or `LB + back`in emergency, robot may fall down after that.**
 

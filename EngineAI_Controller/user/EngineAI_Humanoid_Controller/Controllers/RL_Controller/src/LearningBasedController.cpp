@@ -22,6 +22,8 @@ bool LearningBasedController::init()
 
   save_yaml_config = true;
 
+  bias_clear_flag = true;
+
   printRobotConfig();
 
   return true;
@@ -283,13 +285,42 @@ void LearningBasedController::computeActions()
 }
 void LearningBasedController::updateBias()
 {
+  if (_control_FSM_data->_desiredStateCommand->bias_clear_mode && bias_clear_flag)
+  {
+    if (_control_FSM_data->_desiredStateCommand->linvel_calib_mode)
+    {
+      std::cout << "[Current velocity bias values are all cleared, please save it to yaml file]" << std::endl;
+      _robotConfig.velx_bias = 0;
+      _robotConfig.vely_bias = 0;
+    }
+
+    if (_control_FSM_data->_desiredStateCommand->euler_ang_calib_mode)
+    {
+      std::cout << "[Current euler angle bias values are all cleared, please save it to yaml file]" << std::endl;
+      _robotConfig.roll_bias = 0;
+      _robotConfig.pitch_bias = 0;
+    }
+
+    bias_clear_flag = false;
+  }
+  else if (!_control_FSM_data->_desiredStateCommand->bias_clear_mode)
+  {
+    bias_clear_flag = true;
+  }
+  else
+  {
+    _robotConfig.velx_bias = _robotConfig.velx_bias;
+    _robotConfig.vely_bias = _robotConfig.vely_bias;
+    _robotConfig.roll_bias = _robotConfig.roll_bias;
+    _robotConfig.pitch_bias = _robotConfig.pitch_bias;
+  }
+
   cmd_bias_vel_x = _control_FSM_data->_desiredStateCommand->cmd_vel_bias_x + _robotConfig.velx_bias;
   cmd_bias_vel_y = _control_FSM_data->_desiredStateCommand->cmd_vel_bias_y + _robotConfig.vely_bias;
 
   euler_roll_bias = _control_FSM_data->_desiredStateCommand->roll_bias + _robotConfig.roll_bias;
   euler_pitch_bias = _control_FSM_data->_desiredStateCommand->pitch_bias + _robotConfig.pitch_bias;
 
-  // if (_control_FSM_data->_desiredStateCommand->bias_save_mode && (!_control_FSM_data->_desiredStateCommand->bias_save_mode_pre)) // bias save
   if (_control_FSM_data->_desiredStateCommand->bias_save_mode && save_yaml_config) // bias save
   {
     std::cout << "[Save the Bias Value to Yaml]" << std::endl;

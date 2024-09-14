@@ -63,6 +63,7 @@ public:
         roll_bias = 0;
         bias_save_mode = false;
         bias_save_mode_pre = false;
+        bias_clear_mode = false;
         euler_ang_calib_mode = 0;
         linvel_calib_mode = 0;
         dt = _dt;
@@ -97,6 +98,7 @@ public:
     double roll_bias;
     bool bias_save_mode;
     bool bias_save_mode_pre;
+    bool bias_clear_mode;
     int euler_ang_calib_mode;
     int linvel_calib_mode;
 

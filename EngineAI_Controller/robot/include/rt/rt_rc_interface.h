@@ -35,6 +35,7 @@ public:
 
     bool bias_save_mode = false;
     bool bias_save_mode_pre = false;
+    bool bias_clear_mode = false;
 };
 
 namespace RC_mode

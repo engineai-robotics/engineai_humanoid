@@ -56,6 +56,7 @@ void DesiredStateCommand<T>::convertToStateCommands()
             roll_bias = rcCommand->roll_bias;
             bias_save_mode = rcCommand->bias_save_mode;
             bias_save_mode_pre = rcCommand->bias_save_mode_pre;
+            bias_clear_mode = rcCommand->bias_clear_mode;
             euler_ang_calib_mode = rcCommand->imu_euler_angle_calibration_mode;
             linvel_calib_mode = rcCommand->imu_linvel_calibration_mode;
         }

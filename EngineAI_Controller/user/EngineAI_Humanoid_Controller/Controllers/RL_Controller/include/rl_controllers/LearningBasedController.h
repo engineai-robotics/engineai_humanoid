@@ -104,6 +104,7 @@ private:
   float euler_roll_bias = 0;
   float euler_pitch_bias = 0;
   bool save_yaml_config;
+  bool bias_clear_flag;
 
   /*tau mapping test*/
   Eigen::VectorXd q = Eigen::MatrixXd::Zero(12, 1);
