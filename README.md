@@ -8,7 +8,7 @@ Locomotion control algorithm for bipedal robots of Shenzhen EngineAI Robotics Te
 - config
   - normal parameters of robot configuration
 - lcm-types
-  - lcm datas for logging and debugging
+  - lcm data for logging and debugging
 - robot
 - scripts
 - third-party
@@ -18,7 +18,7 @@ Locomotion control algorithm for bipedal robots of Shenzhen EngineAI Robotics Te
   - controlling algorithm module of model based control (ongoing)
   - user's algorithm developing space
 
-The simulation environment for sim2sim is currently offered with our RL training repository [engineai_legged_gym](https://github.com/engineai-robotics/engineai_legged_gym), and will be transferred to this repository laterly.
+The simulation environment for sim2sim is currently offered with our RL training repository [engineai_legged_gym](https://github.com/engineai-robotics/engineai_legged_gym), and will be transferred to this repository later.
 
 
 Additionally, framework of this repository is designed to combine model based algorithm and learning based algorithm. And the model based part will be opened in the future.
@@ -53,13 +53,13 @@ In order to deploy the trained policy to the robot, there are two devices needed
 
 ## 1.1 Dependencies Installation
 
-The mainboard (NeZha) is already configured properly, it is not needed to do the following configuraions. We suggest you do not change the default development configuration, in case of failling to run your policy trained with our RL framework  [engineai_legged_gym](https://github.com/engineai-robotics/engineai_legged_gym)
+The mainboard (NeZha) is already configured properly, it is not needed to do the following configurations. We suggest you do not change the default development configuration, in case of failing to run your policy trained with our RL framework [engineai_legged_gym](https://github.com/engineai-robotics/engineai_legged_gym)
 
 If you are interested in the configuration process, and want to do it by yourself, the following dependencies with specified version are suggested. 
 
 Again, WE SUGGEST YOU DO NOT CHANGE THE DEFAULT DEVELOPMENT ENVIRONMENT ON BOARD.
 
-For your local developping device, the following dependencies with the specified version are suggested. If you has any problem with the compiling or running process, remember to check the versions of each depencency.
+For your local developing device, the following dependencies with the specified version are suggested. If you have any problem with the compiling or running process, remember to check the versions of each dependency.
 
 - **operating system**: ubuntu 20.04
 
@@ -67,7 +67,7 @@ For your local developping device, the following dependencies with the specified
 
 Since onnx is used to update the RL algorithm, cmake version must above 3.26
 
-Download zip and extrac it
+Download zip and extract it
 ```
 $ wget https://cmake.org/files/v3.28/cmake-3.28.5.zip
 ```
@@ -127,7 +127,7 @@ lcm 1.4.0 and 1.5.0 are tested, other versions are not guaranteed.
 ```
 $ git clone https://github.com/lcm-proj/lcm.git
 $ cd lcm
-$ git checkeout v1.5.0
+$ git checkout v1.5.0
 $ mkdir build
 $ cd build
 $ cmake -DLCM_ENABLE_JAVA=ON ..
@@ -141,9 +141,9 @@ $ sudo apt install default-jdk python-all-dev liblua5.1-dev golang doxygen
 $ sudo apt install openjdk-11-jdk
 ```
 ### 1.1.5 Ros
-Ros is used for onnx and imu library. Follow [Ros offical website](http://wiki.ros.org/noetic/Installation/Ubuntu) to install ros-neotic on your computer.
+Ros is used for onnx and imu library. Follow [ROS official website](http://wiki.ros.org/noetic/Installation/Ubuntu) to install ros-noetic on your computer.
 
-You may used some commands as below
+You may use some commands as below
 ```
 $ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 $ sudo apt install curl
@@ -171,7 +171,7 @@ $ cd onnxruntime/build/Linux/Release/
 $ sudo make install
 ```
 
-onnxruntime version 1.19.0 is suggested. If you would like to use the other version, any conflict generated during the complilation process should be solved by yourself.
+onnxruntime version 1.19.0 is suggested. If you would like to use the other version, any conflict generated during the compilation process should be solved by yourself.
 
 ### 1.1.8 libmotor
 In the directory of ```projectpath/dep-pkgs/..```, you can get the motor API of our robot, and install it on your local developing device with the following command.
@@ -179,7 +179,7 @@ In the directory of ```projectpath/dep-pkgs/..```, you can get the motor API of 
 sudo dpkg -i motor-mcu_1.0.8_amd64.deb
 ``` 
 
-To get deep knowledge of how to use the motor libs, please refer to the ```README.md```  in that directroy and the source code of this repository. 
+To get deep knowledge of how to use the motor libs, please refer to the ```README.md``` in that directory and the source code of this repository. 
 
 ## 1.2  Compilation
 
@@ -198,11 +198,11 @@ And now, you can find a folder named **EngineAI_Humanoid** within the build dire
 ## 1.3 Real Robot Deployment
 ### 1.3.1 Control the robot with the default deployment
 #### 1.3.1.1 Start robot
-The robot is defaulty configured auto-start of the control process. Try to start the robot according to the following steps:
+The robot is configured with auto-start of the control process by default. Try to start the robot according to the following steps:
 - press the power button, check whether the power bank is full. 
-  - If fewer than two lights are enlightened, you need to recharge the power bank.  
+  - If fewer than two lights are lit, you need to recharge the power bank.  
   - If the power is enough, insert the power bank into the robot back.
-- first shortly press the power button, and then continuely press it. Please release the button when it is enlightened.
+- first shortly press the power button, and then continuously press it. Please release the button when it is lit.
 - waiting about 30 seconds for the control process to launch
 
 After the above operation, you can now use the joystick to control the robot.
@@ -212,23 +212,23 @@ Please power on the leg motors with our ESTOP device before you operate the joys
 
 - Press `LB + back` to disable motors (no motor torque)
 - Press `LB + start` to enable motors (no motor torque)
-- Press `LB + B` to enter bented-leg stand mode
+- Press `LB + B` to enter bent-leg stand mode
 - Press `LB + A` to enter straight-leg stand mode
-- Press `LB + X` to enter RL locomotion mode (can only transist from straight stand mode)
+- Press `LB + X` to enter RL locomotion mode (can only transition from straight stand mode)
   -  Press `A` to alternate standing and walking of RL mode 
 
-If the robot drifts fast or has an wired orientation when walking without joystick command in RL locomotion mode, you can follow the direction below to calibrate the bias.
+If the robot drifts fast or has a weird orientation when walking without joystick command in RL locomotion mode, you can follow the direction below to calibrate the bias.
 - euler angle bias calibration
-  1. Press `B` to alterately turn on or off the calibration mode of euler angle bias 
-  2. If this mode is turned on, press the `CROSS_AXIS` to calibration the bias(when holding the joystick, the upper and lower button of the `CROSS_AXIS` calibrates the pitch angle, the left and right ones calibrates the roll angle)
+  1. Press `B` to alternately turn on or off the calibration mode of euler angle bias
+  2. If this mode is turned on, press the `CROSS_AXIS` to calibrate the bias (when holding the joystick, the upper and lower button of the `CROSS_AXIS` calibrates the pitch angle, the left and right ones calibrate the roll angle)
   3. Press `Y` to save the calibrated bias value back to the configured Yaml file.
-  4. Press `B` to turn of the calibration mode
-   
+  4. Press `B` to turn off the calibration mode
+
 - linear velocity calibration
-  1. Press `RB` to alterately turn on or off the calibration mode of linear velocity bias 
-  2. If this mode is turned on, press the `CROSS_AXIS` to calibration the bias(when holding the joystick, the upper and lower button of the `CROSS_AXIS` calibrates the X-direction linear velocity, the left and right ones calibrates the Y-direction linear velocity)
+  1. Press `RB` to alternately turn on or off the calibration mode of linear velocity bias
+  2. If this mode is turned on, press the `CROSS_AXIS` to calibrate the bias (when holding the joystick, the upper and lower button of the `CROSS_AXIS` calibrates the X-direction linear velocity, the left and right ones calibrate the Y-direction linear velocity)
   3. Press `Y` to save the calibrated bias value back to the configured Yaml file.
-  4. Press `B` to turn of the calibration mode
+  4. Press `B` to turn off the calibration mode
 
 - bias clear when necessary
   1. turn on the specific calibration mode
@@ -236,33 +236,33 @@ If the robot drifts fast or has an wired orientation when walking without joysti
   3. Press `Y` to save the calibrated bias value 0 back to the configured Yaml file.
   4. turn off the specific calibration mode
 
-Normally, the operation sequency is: power on->`LB + back`->`LB + start`->`LB + B` or `LB + A`-> make robot stand by itself ->`LB + X`->`LB + A` -> lift robot up -> `LB + start` ->`LB + back`-> shut down
+Normally, the operation sequence is: power on -> `LB + back` -> `LB + start` -> `LB + B` or `LB + A` -> make robot stand by itself -> `LB + X` -> `LB + A` -> lift robot up -> `LB + start` -> `LB + back` -> shut down
 
-**Note that: When robot stands or walks by itsefly, only use `LB + RB`, `LB + start` or `LB + back`in emergency, robot may fall down after that.**
+**Note that: When robot stands or walks by itself, only use `LB + RB`, `LB + start` or `LB + back` in emergency, robot may fall down after that.**
 
 ### 1.3.2 Control the robot with your configuration and policy
 - Connect the robot to your computer with an Ethernet cable
-- Change the network of your computer to static ip，Address:192.168.0.100, Network:255.255.255.0, Gateway:192.168.0.1
-- Use `ifconfig` to find your network device, for example `enp0s25`, use folloing commands to set lcm port
+- Change the network of your computer to static IP: Address: 192.168.0.100, Network: 255.255.255.0, Gateway: 192.168.0.1
+- Use `ifconfig` to find your network device, for example `enp0s25`, use following commands to set lcm port
 ```
-$ sudo ifconfig enp0s25 multicast`
+$ sudo ifconfig enp0s25 multicast
 $ sudo route add -net 224.0.0.0 netmask 240.0.0.0 dev enp0s25
 ```
 - Add the following contents into your bashrc for decoding lcm types
   ``` 
-  export CLASSPATH=$CLASSPATH:your_path/EngineAI_Humanoid/EnginrAI_Controller/lcm-types/my_types.java
+  export CLASSPATH=$CLASSPATH:your_path/EngineAI_Humanoid/EngineAI_Controller/lcm-types/my_types.java
   ```
 - ssh into the robot`ssh user@192.168.0.163`, password is `1`
 - Mount the robot computer disk to your own computer and copy the EngineAI_Humanoid folder to robot computer `/home/user/`
 - Stop the default control process which is auto-started `sudo pkill EngineAI_Controller`
-- Copy the policy file zqsa01_policy.onnx generated by our RL trainning framework to the following path
+- Copy the policy file zqsa01_policy.onnx generated by our RL training framework to the following path
   ```
   EngineAI_Humanoid/install/policy/zqsa01/
   ```
 - Change K_p, K_d and the other parameters as needed in `EngineAI_Humanoid/install/config/zqsa01_rl.yaml`
 - Remember to make a copy of the default zqsa01_policy.onnx and zqsa01_rl.yaml file so that to keep the default locomotion skills
 - Run `./run_biped.sh` on the robot computer
-- Run `lcm-spy` on your local computer to check the joint poses and the other datas
+- Run `lcm-spy` on your local computer to check the joint poses and the other data
 
 # 2. Open-source Requirements
 ## 2.1 Code Format
@@ -285,10 +285,10 @@ Signed-off-by: xxx <xxx@company.com>
 ```
 To be noted:
 - suggest using the command 'git commit -s' to submit so that signed-off information can be automatically generated;
-- submit types can only be chosen from three: Fix(bug fixing), New(new feature)，Modify(code modify);
+- submit types can only be chosen from three: Fix(bug fixing), New(new feature), Modify(code modify);
 - please describe more details in the commit message and avoid repeating the summary line.
 
-We also provided a commit template for your convenience：
+We also provided a commit template for your convenience:
 ```
 $ git config --global commit.template ./.commit-template
 ```
